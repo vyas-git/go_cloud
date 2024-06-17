@@ -1,16 +1,21 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
+  creationTimestamp: null
   name: myjob
 spec:
   template:
+    metadata:
+      creationTimestamp: null
     spec:
       containers:
-        - name: busybox
-          image: busybox
-          command: ["sh", "-c", "echo 'Hello, CKAD' && sleep 10"]
+        - image: busybox
+          name: myjob
+          command: ["sh", "-c", "echo 'CKAD' && sleep 10"]
+          resources: {}
       restartPolicy: Never
-  backoffLimit: 4
-  completions: 3
+  backoffLimit: 6
+  completions: 2
   parallelism: 1
-  ttlSecondsAfterFinished: 20
+  ttlSecondsAfterFinished: 10
+status: {}
