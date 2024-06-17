@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: every-two-minutes-job
+spec:
+  schedule: "*/2 * * * *" # This means the job will run every two minutes
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: busybox
+              image: busybox
+              command: ["sh", "-c", "echo 'Running every two minutes'"]
+          restartPolicy: OnFailure
+      backoffLimit: 6
+      completions: 2
+      parallelism: 1
+      ttlSecondsAfterFinished: 10
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
