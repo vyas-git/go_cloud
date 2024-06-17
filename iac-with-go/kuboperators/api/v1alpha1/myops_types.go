@@ -23,17 +23,17 @@ import (
 // EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
 // NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
 
-// MyOpSpec defines the desired state of MyOp
-type MyOpSpec struct {
+// MyOpsSpec defines the desired state of MyOps
+type MyOpsSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of MyOp. Edit myop_types.go to remove/update
+	// Foo is an example field of MyOps. Edit myops_types.go to remove/update
 	Foo string `json:"foo,omitempty"`
 }
 
-// MyOpStatus defines the observed state of MyOp
-type MyOpStatus struct {
+// MyOpsStatus defines the observed state of MyOps
+type MyOpsStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 }
@@ -41,24 +41,24 @@ type MyOpStatus struct {
 //+kubebuilder:object:root=true
 //+kubebuilder:subresource:status
 
-// MyOp is the Schema for the myops API
-type MyOp struct {
+// MyOps is the Schema for the myops API
+type MyOps struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec   MyOpSpec   `json:"spec,omitempty"`
-	Status MyOpStatus `json:"status,omitempty"`
+	Spec   MyOpsSpec   `json:"spec,omitempty"`
+	Status MyOpsStatus `json:"status,omitempty"`
 }
 
 //+kubebuilder:object:root=true
 
-// MyOpList contains a list of MyOp
-type MyOpList struct {
+// MyOpsList contains a list of MyOps
+type MyOpsList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []MyOp `json:"items"`
+	Items           []MyOps `json:"items"`
 }
 
 func init() {
-	SchemeBuilder.Register(&MyOp{}, &MyOpList{})
+	SchemeBuilder.Register(&MyOps{}, &MyOpsList{})
 }

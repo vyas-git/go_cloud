@@ -33,6 +33,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
 	myoperatorsv1alpha1 "github.com/vyas-git/kuboperator/api/v1alpha1"
+	myoperatorsv4alpha4 "github.com/vyas-git/kuboperator/api/v4alpha4"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -73,6 +74,9 @@ var _ = BeforeSuite(func() {
 	Expect(cfg).NotTo(BeNil())
 
 	err = myoperatorsv1alpha1.AddToScheme(scheme.Scheme)
+	Expect(err).NotTo(HaveOccurred())
+
+	err = myoperatorsv4alpha4.AddToScheme(scheme.Scheme)
 	Expect(err).NotTo(HaveOccurred())
 
 	//+kubebuilder:scaffold:scheme

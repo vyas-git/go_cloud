@@ -1,4 +1,5 @@
 ## Append samples of your project ##
 resources:
-- myoperators_v1alpha1_myop.yaml
+- myoperators_v1alpha1_myops.yaml
+- myoperators_v4alpha4_myops.yaml
 #+kubebuilder:scaffold:manifestskustomizesamples

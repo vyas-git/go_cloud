@@ -30,7 +30,7 @@ import (
 	myoperatorsv1alpha1 "github.com/vyas-git/kuboperator/api/v1alpha1"
 )
 
-var _ = Describe("MyOp Controller", func() {
+var _ = Describe("MyOps Controller", func() {
 	Context("When reconciling a resource", func() {
 		const resourceName = "test-resource"
 
@@ -40,13 +40,13 @@ var _ = Describe("MyOp Controller", func() {
 			Name:      resourceName,
 			Namespace: "default", // TODO(user):Modify as needed
 		}
-		myop := &myoperatorsv1alpha1.MyOp{}
+		myops := &myoperatorsv1alpha1.MyOps{}
 
 		BeforeEach(func() {
-			By("creating the custom resource for the Kind MyOp")
-			err := k8sClient.Get(ctx, typeNamespacedName, myop)
+			By("creating the custom resource for the Kind MyOps")
+			err := k8sClient.Get(ctx, typeNamespacedName, myops)
 			if err != nil && errors.IsNotFound(err) {
-				resource := &myoperatorsv1alpha1.MyOp{
+				resource := &myoperatorsv1alpha1.MyOps{
 					ObjectMeta: metav1.ObjectMeta{
 						Name:      resourceName,
 						Namespace: "default",
@@ -59,16 +59,16 @@ var _ = Describe("MyOp Controller", func() {
 
 		AfterEach(func() {
 			// TODO(user): Cleanup logic after each test, like removing the resource instance.
-			resource := &myoperatorsv1alpha1.MyOp{}
+			resource := &myoperatorsv1alpha1.MyOps{}
 			err := k8sClient.Get(ctx, typeNamespacedName, resource)
 			Expect(err).NotTo(HaveOccurred())
 
-			By("Cleanup the specific resource instance MyOp")
+			By("Cleanup the specific resource instance MyOps")
 			Expect(k8sClient.Delete(ctx, resource)).To(Succeed())
 		})
 		It("should successfully reconcile the resource", func() {
 			By("Reconciling the created resource")
-			controllerReconciler := &MyOpReconciler{
+			controllerReconciler := &MyOpsReconciler{
 				Client: k8sClient,
 				Scheme: k8sClient.Scheme(),
 			}

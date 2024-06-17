@@ -1,12 +1,12 @@
-apiVersion: myoperators.vyasreddy.dev/v1alpha1
-kind: MyOp
+apiVersion: myoperators.vyasreddy.dev/v4alpha4
+kind: MyOps
 metadata:
   labels:
-    app.kubernetes.io/name: myop
-    app.kubernetes.io/instance: myop-sample
+    app.kubernetes.io/name: myops
+    app.kubernetes.io/instance: myops-sample
     app.kubernetes.io/part-of: kuboperators
     app.kubernetes.io/managed-by: kustomize
     app.kubernetes.io/created-by: kuboperators
-  name: myop-sample
+  name: myops-sample
 spec:
   # TODO(user): Add fields here

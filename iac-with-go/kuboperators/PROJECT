@@ -17,7 +17,7 @@ resources:
   controller: true
   domain: vyasreddy.dev
   group: myoperators
-  kind: MyOp
+  kind: MyOps
   path: github.com/vyas-git/kuboperator/api/v1alpha1
   version: v1alpha1
 version: "3"
