@@ -45,3 +45,34 @@
     kubectl run busybox --image=busybox --restart=Never --dry-run=client -o yaml --command -- env > envpod.yaml
 
 </details>
+
+#### 6. Create the YAML for a new ResourceQuota called 'myrq' with hard limits of 1 CPU, 1G memory and 2 pods without creating it
+
+<details><summary>Solution</summary>
+        k create quota myrq --hard=cpu=1,memory=1G,pods=2 --dry-run=client -o yaml
+</details>
+
+#### 7. Get pods on all namespaces
+
+<details><summary>Solution</summary>
+
+        k get pods --all-namespaces
+
+        k get pods -A
+
+</details>
+
+#### 8. Create a pod with image nginx called nginx and expose traffic on port 80
+
+<details><summary>Solution</summary>
+        k run nginx --image=nginx --port=80 --restart=Never
+</details>
+
+#### 9.Change pod's image to nginx:1.7.1. Observe that the container will be restarted as soon as the image gets pulled
+
+<details><summary>Solution</summary>
+      
+        k set image pod/nginx nginx=nginx:1.7.1
+        k describe po nginx # you will see an event 'Container will be killed and recreated'
+        k get po nginx -w # watch it
+</details>
